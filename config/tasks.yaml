@@ -1,0 +1,56 @@
+# Aegis-24 Task Definitions
+
+tasks:
+  setup_platform:
+    description: "Initialize the Aegis-24 platform"
+    agent: ingestion_agent
+    priority: high
+    
+  build_research_graph:
+    description: "Build and execute research graph"
+    agent: research_agent
+    priority: medium
+    
+  build_dev_swarm:
+    description: "Build remediation swarm for code fixes"
+    agent: remediation_agent
+    priority: medium
+    
+  apply_guardrails:
+    description: "Apply security guardrails to input/output"
+    agent: security_agent
+    priority: critical
+    
+  instrument_traces:
+    description: "Instrument traces for observability"
+    agent: observability_agent
+    priority: low
+    
+  run_redteam:
+    description: "Execute adversarial prompt testing"
+    agent: security_agent
+    priority: critical
+    
+  generate_audit:
+    description: "Generate compliance audit report"
+    agent: analyst_agent
+    priority: high
+    
+  push_to_github:
+    description: "Push completed code to GitHub"
+    agent: null  # Manual/CI step
+    priority: high
+
+# Task routing rules
+routing:
+  default_agent: ingestion_agent
+  escalation_threshold: 0.5
+  max_retries: 3
+  
+# Done state criteria
+done_state:
+  eval_loop_passed: true
+  security_gates_cleared: true
+  zero_pii_leaks: true
+  zero_jailbreaks: true
+  sandbox_escape_prevented: true

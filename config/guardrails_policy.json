@@ -1,0 +1,69 @@
+{
+  "policy_version": "1.0.0",
+  "last_updated": "2024-01-01T00:00:00Z",
+  "guardrails": {
+    "input_guardrail": {
+      "enabled": true,
+      "block_prompt_injection": true,
+      "block_jailbreak_attempts": true,
+      "detect_adversarial_patterns": true
+    },
+    "output_guardrail": {
+      "enabled": true,
+      "redact_pii": true,
+      "enforce_financial_disclaimers": true,
+      "block_guarantees": true,
+      "check_sec_compliance": true,
+      "check_finra_compliance": true
+    }
+  },
+  "pii_categories": {
+    "ssn": {
+      "pattern": "\\b\\d{3}-\\d{2}-\\d{4}\\b",
+      "action": "redact",
+      "replacement": "[SSN_REDACTED]"
+    },
+    "credit_card": {
+      "pattern": "\\b\\d{4}[- ]?\\d{4}[- ]?\\d{4}[- ]?\\d{4}\\b",
+      "action": "redact",
+      "replacement": "[CC_REDACTED]"
+    },
+    "api_key": {
+      "pattern": "\\bsk-[a-zA-Z0-9]{20,}\\b",
+      "action": "redact",
+      "replacement": "[API_KEY_REDACTED]"
+    },
+    "email": {
+      "pattern": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+      "action": "redact",
+      "replacement": "[EMAIL_REDACTED]"
+    },
+    "phone": {
+      "pattern": "\\b\\d{3}[-.)\\s]?\\d{3}[-.)\\s]?\\d{4}\\b",
+      "action": "redact",
+      "replacement": "[PHONE_REDACTED]"
+    }
+  },
+  "compliance_rules": {
+    "sec": {
+      "block_insider_trading_signals": true,
+      "require_disclaimers": true,
+      "block_unlicensed_advice": true
+    },
+    "finra": {
+      "block_guarantees": true,
+      "require_risk_disclosure": true,
+      "block_performance_promises": true
+    }
+  },
+  "escalation": {
+    "confidence_threshold": 0.8,
+    "auto_escalate_on_failure": true,
+    "escalation_channels": ["security_team", "compliance_officer"]
+  },
+  "audit": {
+    "log_all_violations": true,
+    "retain_logs_days": 365,
+    "export_format": "json"
+  }
+}

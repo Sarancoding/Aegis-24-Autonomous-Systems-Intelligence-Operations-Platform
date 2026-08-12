@@ -1,0 +1,68 @@
+# Aegis-24 Agent Configuration
+
+agents:
+  ingestion_agent:
+    role: "Ingestion Specialist"
+    description: "Handles event ingestion from webhooks, CDC, and MCP connectors"
+    capabilities:
+      - webhook_processing
+      - cdc_events
+      - mcp_connectors
+      - redis_deduplication
+    max_throughput: 1000  # events/sec
+    timeout_seconds: 30
+    
+  research_agent:
+    role: "Research Specialist"
+    description: "Executes deep research with citation verification"
+    capabilities:
+      - deep_research
+      - citation_verification
+      - report_generation
+      - reflexion_loops
+    max_iterations: 3
+    score_threshold: 0.8
+    timeout_seconds: 300
+    
+  remediation_agent:
+    role: "Remediation Specialist"
+    description: "Fixes code issues with E2B sandboxed testing"
+    capabilities:
+      - code_fixes
+      - test_execution
+      - patch_generation
+      - e2b_sandboxing
+    max_retries: 3
+    timeout_seconds: 600
+    
+  security_agent:
+    role: "Security/Compliance Specialist"
+    description: "Enforces guardrails and compliance"
+    capabilities:
+      - pii_detection
+      - injection_blocking
+      - compliance_check
+      - a2a_cards
+    confidence_threshold: 0.8
+    timeout_seconds: 10
+    
+  observability_agent:
+    role: "Observability Specialist"
+    description: "Tracks traces, costs, and lineage"
+    capabilities:
+      - trace_collection
+      - cost_attribution
+      - lineage_tracking
+      - phoenix_export
+      - langsmith_export
+    timeout_seconds: 5
+    
+  analyst_agent:
+    role: "Compliance Analyst"
+    description: "Generates audit reports and visualizations"
+    capabilities:
+      - report_generation
+      - pdf_creation
+      - test_visualization
+      - compliance_audit
+    timeout_seconds: 60

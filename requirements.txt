@@ -1,0 +1,25 @@
+# Core Dependencies
+asyncio>=3.4.3
+pyyaml>=6.0
+pydantic>=2.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+# Optional: Observability
+# arize-phoenix>=4.0.0
+# langsmith>=0.1.0
+
+# Optional: E2B Sandbox
+# e2b>=0.15.0
+
+# Optional: Redis for deduplication
+# redis>=4.5.0
+
+# Optional: PostgreSQL
+# psycopg2-binary>=2.9.0
+
+# PDF Generation (for documentation)
+# reportlab>=4.0.0
+# markdown>=3.4.0
